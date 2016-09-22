@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hello world</h1>
+    <ul>
+        <% user.forEach(function(user){%>
+            <li>username :
+                <%= user.username %>---email :
+                    <%= user.email %>
+            </li>
+            <% });%>
+    </ul>
+</body>
+
+</html>
