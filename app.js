@@ -22,6 +22,8 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //引入路由
 var users = require('./routes/userRoutes');
 app.use('/users', users);
+var indexs = require('./routes/indexRoutes');
+app.use('/', indexs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
