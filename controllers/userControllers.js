@@ -4,7 +4,7 @@ module.exports = {
 
     get_index : function(req, res) {
         var msg = userModel.test();
-        console.log(msg);
+        // console.log(msg);
         res.render('test',{msg: msg});
     },
 
@@ -14,5 +14,19 @@ module.exports = {
             arr =JSON.parse(result);
             res.render('users',{user :arr});
         });
-    }
+    },
+
+    post_user : function(req, res) {
+
+        var id = req.body.id;
+
+        var updateParam = {
+            'username':req.body.username,
+            'email':req.body.email,
+        }
+        
+        userModel.updateUser(id,updateParam,function(){
+            res.redirect('/users');
+        });
+    },
 }

@@ -20,7 +20,15 @@ module.exports = {
             })
         });
     },
-    test:function() {
-        return "hello world from test";
+    updateUser : function (id,updateParam,callback) {
+        pool.getConnection(function(err, connection) {
+            //定义查询语句
+            var sql = 'UPDATE `users` SET username="'+updateParam['username']+'", email="'+updateParam['email']+'" WHERE id="'+id+'" ;';
+            connection.query(sql,function(err,result) {
+                callback(err,result);
+                // 释放连接
+                connection.release();
+            })
+        });
     }
 }
