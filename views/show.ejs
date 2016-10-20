@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>detail</h1>
+    <ul>
+        <% user.forEach(function(user){%>
+            <p>username:
+                <input type="text" name="username" value="<%= user.username %>" />
+            </p>
+            <p>email:
+                <input type="text" name="email" value="<%= user.email %>" />
+            </p>
+            <% });%>
+    </ul>
+</body>
+
+</html>

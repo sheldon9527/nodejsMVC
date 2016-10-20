@@ -20,6 +20,18 @@ module.exports = {
             })
         });
     },
+    showOneUser : function(req,res,callback) {
+        pool.getConnection(function(err, connection) {
+            //定义查询语句
+            var sql = 'SELECT * FROM `users` WHERE id="'+req.param('id')+'"';
+            connection.query(sql,function(err,result) {
+                result = JSON.stringify(result);
+                callback(err,result);
+                // 释放连接
+                connection.release();
+            })
+        });
+    },
     updateUser : function (id,updateParam,callback) {
         pool.getConnection(function(err, connection) {
             //定义查询语句

@@ -10,8 +10,8 @@
     <h1>hello world</h1>
     <ul>
         <% user.forEach(function(user){%>
-            <form action="/users" method="post">
-                <input type="text" name="id" value="<%= user.id %>" hidden="hidden" />
+            <form action="/users/<%= user.id %>" method="post">
+                <input type="text" name="_method" value="put" hidden="hidden" />
                 <p>username:
                     <input type="text" name="username" value="<%= user.username %>" />
                 </p>
@@ -22,6 +22,11 @@
             </form>
             <% });%>
     </ul>
+
+    <% user.forEach(function(user){%>
+        <a href="/users/<%= user.id %>">
+            <%= user.username %>的详情</a>
+        <% });%>
 </body>
 
 </html>
