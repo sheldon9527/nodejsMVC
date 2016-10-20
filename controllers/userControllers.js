@@ -23,9 +23,23 @@ module.exports = {
             'username':req.body.username,
             'email':req.body.email,
         }
-        console.log(updateParam);
+
         userModel.updateUser(id,updateParam,function(){
             res.redirect('/users/'+id);
         });
+    },
+    post_user : function(req, res) {
+
+        var createParam = {
+            'username':req.body.username,
+            'email':req.body.email,
+        }
+        userModel.createUser(createParam,function(){
+            res.redirect('/users');
+        });
+    },
+    post_create_user : function(req, res) {
+
+        res.render('create');
     },
 }

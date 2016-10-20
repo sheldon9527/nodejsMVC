@@ -8,6 +8,7 @@
 
 <body>
     <h1>hello world</h1>
+    <a href="/users/create/add">create user</a>
     <ul>
         <% user.forEach(function(user){%>
             <form action="/users/<%= user.id %>" method="post">
