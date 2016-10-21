@@ -50,10 +50,8 @@ module.exports = {
         });
     },
     delete_user : function(req, res) {
-
-        var id = req.param('id');
+        var id = req.body.id;
         userModel.deleteUser(id,function(){
-            res.redirect('/users');
         });
     },
 }

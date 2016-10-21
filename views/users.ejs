@@ -32,7 +32,7 @@
                             <%= user.email %>
                         </td>
                         <td class="">
-                            <a href="javascript:;" class="delete" data-url="/users/<%= user.id %>" data-method="delete" data-confirm="Are you sure?">删除</a>
+                            <a href="javascript:;" class="delete" data-url="/users/<%= user.id %>" data-method="delete" data-id="<%= user.id %>" data-confirm="Are you sure?">删除</a>
                             <a href="/users/<%= user.id %>" data-confirm="Are you sure?">详情</a>
                             <a href="/users/<%= user.id %>/edit" data-confirm="Are you sure?">编辑</a>
                         </td>
