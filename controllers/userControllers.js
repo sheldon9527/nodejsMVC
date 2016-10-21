@@ -42,4 +42,18 @@ module.exports = {
 
         res.render('create');
     },
+    get_edit_user : function(req, res) {
+        var arr;
+        userModel.showOneUser(req,res,function(err,result) {
+            arr =JSON.parse(result);
+            res.render('edit',{user :arr});
+        });
+    },
+    delete_user : function(req, res) {
+
+        var id = req.param('id');
+        userModel.deleteUser(id,function(){
+            res.redirect('/users');
+        });
+    },
 }

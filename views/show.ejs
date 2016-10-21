@@ -7,14 +7,14 @@
 </head>
 
 <body>
-    <h1>detail</h1>
+    <h1>show</h1>
     <ul>
         <% user.forEach(function(user){%>
             <p>username:
-                <input type="text" name="username" value="<%= user.username %>" />
+                <%= user.username %>
             </p>
             <p>email:
-                <input type="text" name="email" value="<%= user.email %>" />
+                <%= user.email %>
             </p>
             <% });%>
     </ul>

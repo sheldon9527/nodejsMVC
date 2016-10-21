@@ -3,31 +3,46 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Nodejs</title>
 </head>
 
 <body>
-    <h1>hello world</h1>
+    <h1>lists</h1>
     <a href="/users/create/add">create user</a>
     <ul>
         <% user.forEach(function(user){%>
-            <form action="/users/<%= user.id %>" method="post">
-                <input type="text" name="_method" value="put" hidden="hidden" />
-                <p>username:
-                    <input type="text" name="username" value="<%= user.username %>" />
-                </p>
-                <p>email:
-                    <input type="text" name="email" value="<%= user.email %>" />
-                </p>
-                <input type="submit" value="Submit" />
-            </form>
+            <table id="" class="table table-bordered table-hover dataTable" role="grid">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">ID</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">用户名</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">邮箱</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr role="row">
+                        <td class="">
+                            <%= user.id %>
+                        </td>
+                        <td class="">
+                            <%= user.username %>
+                        </td>
+                        <td class="">
+                            <%= user.email %>
+                        </td>
+                        <td class="">
+                            <a href="javascript:;" class="delete" data-url="/users/<%= user.id %>" data-method="delete" data-confirm="Are you sure?">删除</a>
+                            <a href="/users/<%= user.id %>" data-confirm="Are you sure?">详情</a>
+                            <a href="/users/<%= user.id %>/edit" data-confirm="Are you sure?">编辑</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <% });%>
     </ul>
-
-    <% user.forEach(function(user){%>
-        <a href="/users/<%= user.id %>">
-            <%= user.username %>的详情</a>
-        <% });%>
 </body>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/delete.js" type="text/javascript"></script>
 
 </html>

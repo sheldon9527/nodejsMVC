@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>update</h1>
+    <ul>
+        <% user.forEach(function(user){%>
+            <form action="/users/<%= user.id %>" method="post">
+                <input type="text" name="_method" value="put" hidden="hidden" />
+                <p>username:
+                    <input type="text" name="username" value="<%= user.username %>" />
+                </p>
+                <p>email:
+                    <input type="text" name="email" value="<%= user.email %>" />
+                </p>
+                <input type="submit" value="Submit" />
+            </form>
+            <% });%>
+    </ul>
+</body>
+
+</html>

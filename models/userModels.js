@@ -47,7 +47,17 @@ module.exports = {
         pool.getConnection(function(err, connection) {
             //定义查询语句
             var sql = 'INSERT INTO `users` SET username="'+createParam['username']+'", password="123456", email="'+createParam['email']+'" ;';
-            console.log(sql);
+            connection.query(sql,function(err,result) {
+                callback(err,result);
+                // 释放连接
+                connection.release();
+            })
+        });
+    },
+    deleteUser : function (id,callback) {
+        pool.getConnection(function(err, connection) {
+            //定义查询语句
+            var sql = 'DELETE FROM `users` WHERE id="'+id+'";';
             connection.query(sql,function(err,result) {
                 callback(err,result);
                 // 释放连接
