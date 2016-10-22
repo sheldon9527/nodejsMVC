@@ -8,6 +8,10 @@ var methodOverride = require('method-override');
 
 var app = express();
 
+
+//jwt
+app.set('sheldon', 'sheldon');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -36,6 +40,8 @@ var users = require('./routes/userRoutes');
 app.use('/users', users);
 var indexs = require('./routes/indexRoutes');
 app.use('/', indexs);
+var auths = require('./routes/authRoutes');
+app.use('/auth', auths);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
