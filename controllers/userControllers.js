@@ -25,7 +25,7 @@ module.exports = {
         }
 
         userModel.updateUser(id,updateParam,function(){
-            res.redirect('/users/'+id);
+            res.redirect(200,'/users/'+id);
         });
     },
     post_user : function(req, res) {
@@ -35,7 +35,7 @@ module.exports = {
             'email':req.body.email,
         }
         userModel.createUser(createParam,function(){
-            res.redirect('/users');
+            res.redirect(200,'/users');
         });
     },
     post_create_user : function(req, res) {
@@ -52,6 +52,7 @@ module.exports = {
     delete_user : function(req, res) {
         var id = req.body.id;
         userModel.deleteUser(id,function(){
+            res.redirect(200,'/users');
         });
     },
 }
