@@ -1,4 +1,6 @@
 var  userModel = require('../models/userModels');
+var  redis = require("redis");
+var  redisConfig = require('../config/redis');
 
 module.exports = {
 
@@ -25,7 +27,7 @@ module.exports = {
         }
 
         userModel.updateUser(id,updateParam,function(){
-            res.redirect(200,'/users/'+id);
+            res.redirect('/users/'+id);
         });
     },
     post_user : function(req, res) {
@@ -34,12 +36,29 @@ module.exports = {
             'username':req.body.username,
             'email':req.body.email,
         }
-        userModel.createUser(createParam,function(){
-            res.redirect(200,'/users');
+        //redis
+        client = redis.createClient(redis.redisConfig);
+        //判断连接
+        client.on("error", function (err) {
+            console.log("Error " + err);
         });
+
+        //redis
+        client.set("username", req.body.username);
+        client.set("email", req.body.email);
+        client.get("username", function(err, username) {
+            console.log(username);
+        });
+        client.get("email", function(err, email) {
+            console.log(email);
+        });
+
+        userModel.createUser(createParam,function(){
+            res.redirect('/users');
+        });
+
     },
     post_create_user : function(req, res) {
-
         res.render('create');
     },
     get_edit_user : function(req, res) {
