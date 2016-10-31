@@ -1,10 +1,11 @@
 var userModel = require('../models/userModels');
-// var bcrypt = require('bcrypt');
-// var jwt = require('jwt-simple');
+var bcrypt = require('bcryptjs');
+var jwt = require('jwt-simple');
 var jwtauth = require('../middleware/jwtauth.js');
 
 module.exports = {
     post_sign_up : function(req, res) {
+
         salt = bcrypt.genSaltSync(10);
         password = bcrypt.hashSync(req.body.password,salt);
 
@@ -42,9 +43,7 @@ module.exports = {
             }
 
             token = jwt.encode({user: userInfo}, 'sheldon');
-
-            // res.json({token : token,expires: 1,user: userInfo});
-
+             console.log(token);
              decoded = jwt.decode(token, 'sheldon');
              console.log(decoded);
 

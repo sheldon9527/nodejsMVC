@@ -1,5 +1,6 @@
 var  userModel = require('../models/userModels');
 var  redis = require("redis");
+var bcrypt = require('bcryptjs');
 var  redisConfig = require('../config/redis');
 
 module.exports = {
@@ -32,9 +33,12 @@ module.exports = {
     },
     post_user : function(req, res) {
 
+        salt = bcrypt.genSaltSync(10);
+        password = bcrypt.hashSync(req.body.password,salt);
         var createParam = {
             'username':req.body.username,
             'email':req.body.email,
+            'password':password,
         }
         //redis
         client = redis.createClient(redis.redisConfig);
