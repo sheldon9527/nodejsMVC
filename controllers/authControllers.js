@@ -1,6 +1,6 @@
 var userModel = require('../models/userModels');
-var bcrypt = require('bcrypt');
-var jwt = require('jwt-simple');
+// var bcrypt = require('bcrypt');
+// var jwt = require('jwt-simple');
 var jwtauth = require('../middleware/jwtauth.js');
 
 module.exports = {
