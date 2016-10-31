@@ -53,7 +53,7 @@ module.exports = {
             console.log(email);
         });
 
-        client.end(true); 
+        client.end(true);
 
         userModel.createUser(createParam,function(){
             res.redirect('/users');
