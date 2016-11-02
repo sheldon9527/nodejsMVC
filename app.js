@@ -9,12 +9,12 @@ var methodOverride = require('method-override');
 var app = express();
 
 
-var io = require('socket.io')();
-io.on('connection', function(socket){
-    socket.emit('welcome', 'create user success');
-});
-
-io.listen(3001);
+// var io = require('socket.io')();
+// io.on('connection', function(socket){
+//     socket.emit('welcome', 'create user success');
+// });
+//
+// io.listen(3001);
 
 
 //jwt
