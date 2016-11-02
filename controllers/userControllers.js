@@ -3,9 +3,6 @@ var  redis = require("redis");
 var  bcrypt = require('bcryptjs');
 var  redisConfig = require('../config/redis');
 
-
-io.listen(3001);
-
 module.exports = {
 
     get_user : function(req, res) {
