@@ -1,7 +1,10 @@
 var  userModel = require('../models/userModels');
 var  redis = require("redis");
-var bcrypt = require('bcryptjs');
+var  bcrypt = require('bcryptjs');
 var  redisConfig = require('../config/redis');
+
+
+io.listen(3001);
 
 module.exports = {
 
@@ -51,15 +54,16 @@ module.exports = {
         client.set("username", req.body.username);
         client.set("email", req.body.email);
         client.get("username", function(err, username) {
-            console.log(username);
+            // console.log(username);
         });
         client.get("email", function(err, email) {
-            console.log(email);
+            // console.log(email);
         });
 
         client.end(true);
 
-        userModel.createUser(createParam,function(){
+        userModel.createUser(createParam,function(err){
+
             res.redirect('/users');
         });
 
