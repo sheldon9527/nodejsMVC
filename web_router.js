@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var jwtauth = require('./middleware/jwtauth.js');
-var authController = require('./controllers/authControllers');
 var indexController = require('./controllers/indexControllers');
+var authController = require('./controllers/authControllers');
 var userController = require('./controllers/userControllers');
 //主页
 router.get('/',indexController.get_index);

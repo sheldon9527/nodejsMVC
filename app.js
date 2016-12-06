@@ -8,13 +8,17 @@ var methodOverride = require('method-override');
 
 var app = express();
 
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-// var io = require('socket.io')();
-// io.on('connection', function(socket){
-//     socket.emit('welcome', 'create user success');
-// });
-//
-// io.listen(3001);
+server.listen(3000);
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 
 
 //jwt
